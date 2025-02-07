@@ -129,10 +129,12 @@ const Banner = () => {
               whileHover={{ scale: 1.05 }}
               className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
             >
-              <div className="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-6xl sm:text-7xl md:text-8xl font-bold">
-                  {bannerData?.[0]?.name ? bannerData[0].name.charAt(0) : "S"}
-                </span>
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img 
+                  src={bannerData?.[0]?.image} 
+                  alt={bannerData?.[0]?.name || "Profile"}
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-xl -z-10" />

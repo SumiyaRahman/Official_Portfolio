@@ -44,6 +44,8 @@ const BannerIntro = () => {
         }
     };
 
+    console.log(bannerIntroData?.[0]?._id);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         

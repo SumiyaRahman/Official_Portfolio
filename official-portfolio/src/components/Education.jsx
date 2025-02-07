@@ -47,15 +47,15 @@ const Education = () => {
                     className="text-center mb-12 sm:mb-16"
                     variants={itemVariants}
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-                        <span className="bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-400 text-transparent bg-clip-text">
-                            Educational Journey
+                    <h2 className="text-5xl md:text-6xl font-bold mb-6 playfair">
+                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
+                        Educational Journey
                         </span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
                         My academic background and qualifications
                     </p>
-                    <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-purple-400 to-indigo-400 mx-auto mt-4 sm:mt-6"></div>
+                    <div className="w-16 sm:w-20 lg:w-24 h-1 sm:h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 mx-auto mt-6 sm:mt-8 rounded-full"></div>
                 </motion.div>
 
                 {/* Timeline */}

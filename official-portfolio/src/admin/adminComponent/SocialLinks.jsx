@@ -20,7 +20,7 @@ const SocialLinks = () => {
     const { data: socialLinksData, refetch } = useQuery({
         queryKey: ['socialLinks'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/social-links');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/social-links');
             return res.data;
         }
     });
@@ -45,9 +45,9 @@ const SocialLinks = () => {
         
         try {
             if (socialLinksData?.length > 0) {
-                await axios.patch(`http://localhost:3000/social-links/${socialLinksData[0]._id}`, { links: socialLinks });
+                await axios.patch(`https://official-portfolio-server.vercel.app/social-links/${socialLinksData[0]._id}`, { links: socialLinks });
             } else {
-                await axios.post('http://localhost:3000/social-links', { links: socialLinks });
+                await axios.post('https://official-portfolio-server.vercel.app/social-links', { links: socialLinks });
             }
             setIsModalOpen(false);
             refetch();

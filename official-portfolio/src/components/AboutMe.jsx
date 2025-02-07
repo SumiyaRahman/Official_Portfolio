@@ -8,7 +8,7 @@ const AboutMe = () => {
     const { data: aboutData } = useQuery({
         queryKey: ['aboutMe'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/about-me');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/about-me');
             return res.data;
         }
     });

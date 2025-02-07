@@ -7,7 +7,7 @@ const Skills = () => {
     const { data: skillsData } = useQuery({
         queryKey: ['skills'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/skills');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/skills');
             return res.data;
         }
     });

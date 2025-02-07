@@ -17,7 +17,7 @@ const Project = () => {
     const { data: projectsData, refetch } = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/project');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/project');
             return res.data;
         }
     });
@@ -64,7 +64,7 @@ const Project = () => {
         };
 
         try {
-            await axios.post('http://localhost:3000/project', projectData);
+            await axios.post('https://official-portfolio-server.vercel.app/project', projectData);
             setIsModalOpen(false);
             refetch();
             // Reset form

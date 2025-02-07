@@ -15,7 +15,7 @@ const AboutMe = () => {
     const { data: aboutData, refetch } = useQuery({
         queryKey: ['aboutMe'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/about-me');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/about-me');
             return res.data;
         }
     });
@@ -62,9 +62,9 @@ const AboutMe = () => {
         try {
             const aboutId = aboutData[0]?._id;
             if (!aboutId) {
-                await axios.post('http://localhost:3000/about-me', updateData);
+                await axios.post('https://official-portfolio-server.vercel.app/about-me', updateData);
             } else {
-                await axios.patch(`http://localhost:3000/about-me/${aboutId}`, updateData);
+                await axios.patch(`https://official-portfolio-server.vercel.app/about-me/${aboutId}`, updateData);
             }
             setIsModalOpen(false);
             refetch();

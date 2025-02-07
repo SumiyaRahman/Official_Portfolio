@@ -8,7 +8,7 @@ const Education = () => {
     const { data: educationData } = useQuery({
         queryKey: ['education'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/educational-qualification');
+            const res = await axios.get('https://official-portfolio-server.vercel.app/educational-qualification');
             return res.data;
         }
     });

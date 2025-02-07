@@ -11,7 +11,7 @@ const ViewDetails = () => {
     const { data: project } = useQuery({
         queryKey: ['project', id],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:3000/project/${id}`);
+            const res = await axios.get(`https://official-portfolio-server.vercel.app/project/${id}`);
             return res.data;
         }
     });

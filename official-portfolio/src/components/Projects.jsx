@@ -9,7 +9,7 @@ const Projects = () => {
   const { data: projectsData } = useQuery({
     queryKey: ["projects"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/project");
+      const res = await axios.get("https://official-portfolio-server.vercel.app/project");
       return res.data;
     },
   });

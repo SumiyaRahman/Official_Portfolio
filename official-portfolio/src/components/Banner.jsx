@@ -8,7 +8,7 @@ const Banner = () => {
   const { data: bannerData } = useQuery({
     queryKey: ["bannerIntro"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/banner-intro");
+      const res = await axios.get("https://official-portfolio-server.vercel.app/banner-intro");
       return res.data;
     },
   });

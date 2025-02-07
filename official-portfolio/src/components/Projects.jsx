@@ -48,7 +48,7 @@ const Projects = () => {
         {/* Section Title */}
         <motion.div className="text-center mb-12 sm:mb-16 lg:mb-20" variants={cardVariants}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 text-transparent bg-clip-text">
+            <span className="playfair bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 text-transparent bg-clip-text">
               Featured Projects
             </span>
           </h2>

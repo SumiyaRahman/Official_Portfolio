@@ -46,7 +46,7 @@ const Banner = () => {
               transition={{ delay: 0.4 }}
               className="my-8"
             >
-              <span className="playfair bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-400 text-transparent bg-clip-text text-2xl md:text-[55px] font-medium leading-[1.8rem] tracking-[0.2rem]">
+              <span className="playfair bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text text-2xl md:text-[55px] font-medium leading-[1.8rem] tracking-[0.2rem]">
                 {(bannerData?.[0]?.designation || "Next-Level Web Developer.").split('').map((char, index) => (
                   <motion.span
                     key={index}
@@ -96,7 +96,7 @@ const Banner = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, color: "#A855F7" }}
-                    className="text-gray-400 text-xl hover:text-purple-500 transition-colors duration-300"
+                    className="text-gray-400 text-xl hover:text-primary transition-colors duration-300"
                   >
                     {social.icon}
                   </motion.a>

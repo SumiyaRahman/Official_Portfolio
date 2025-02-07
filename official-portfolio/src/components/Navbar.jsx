@@ -27,7 +27,7 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto py-3"
+      className="container mx-auto py-3 fixed top-0 left-0 right-0 z-50  backdrop-blur-sm"
     >
       <div className="navbar bg-transparent">
         <div className="navbar-start">

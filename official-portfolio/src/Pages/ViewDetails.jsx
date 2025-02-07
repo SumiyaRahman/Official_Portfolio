@@ -46,26 +46,26 @@ const ViewDetails = () => {
                 {/* Project Header */}
                 <motion.div variants={itemVariants} className="text-center mb-12">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-400 text-transparent bg-clip-text">
+                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
                             {project?.projectName}
                         </span>
                     </h1>
-                    <div className="flex justify-center gap-6 mt-6">
+                    <div className="flex justify-center gap-6 mt-10">
                         <a 
                             href={project?.liveLink} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 
-                                     rounded-lg text-white hover:from-purple-700 hover:to-indigo-700 transition-all"
+                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-primary
+                                     rounded-lg cursor-pointer text-white hover:from-purple-700 hover:to-indigo-700 transition-all"
                         >
                             <FaExternalLinkAlt /> Live Demo
                         </a>
                         <a 
-                            href={project?.github} 
+                            href={project?.githubLink} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 px-6 py-3 bg-gray-800 rounded-lg text-white 
-                                     hover:bg-gray-700 transition-all"
+                                     hover:bg-gray-700 cursor-pointer transition-all"
                         >
                             <FaGithub /> Source Code
                         </a>
@@ -115,11 +115,9 @@ const ViewDetails = () => {
                             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
                                 <FaRocket className="text-purple-500" /> Future Improvements
                             </h2>
-                            <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                {project?.futurePlans?.map((plan, index) => (
-                                    <li key={index}>{plan}</li>
-                                ))}
-                            </ul>
+                            <p className="text-gray-300 leading-relaxed">
+                                {project?.improvements}
+                            </p>
                         </div>
                     </motion.div>
 
@@ -134,31 +132,10 @@ const ViewDetails = () => {
                                 <FaLightbulb className="text-purple-500" /> Tech Stack
                             </h2>
                             <div className="flex flex-wrap gap-2">
-                                {project?.technologies?.map((tech, index) => (
-                                    <span 
-                                        key={index}
-                                        className="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
+                            <p className="text-gray-300 leading-relaxed">
+                                {project?.techStack}
+                            </p>
                             </div>
-                        </div>
-
-                        {/* Key Features */}
-                        <div className="bg-gray-900/50 p-6 rounded-xl backdrop-blur-sm">
-                            <h2 className="text-2xl font-bold text-white mb-4">Key Features</h2>
-                            <ul className="space-y-3">
-                                {project?.features?.map((feature, index) => (
-                                    <li 
-                                        key={index}
-                                        className="flex items-start gap-2 text-gray-300"
-                                    >
-                                        <span className="text-purple-500">•</span>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     </motion.div>
                 </div>

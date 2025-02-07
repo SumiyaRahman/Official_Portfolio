@@ -109,7 +109,7 @@ const Projects = () => {
                     View Details
                   </Link>
                   <div className="flex gap-3">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
                        className="p-3 bg-gray-800 hover:bg-gray-700 rounded-xl text-gray-300 hover:text-white transition-all">
                       <FaGithub size={20} />
                     </a>

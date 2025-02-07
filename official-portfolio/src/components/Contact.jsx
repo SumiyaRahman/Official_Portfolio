@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Contact = () => {
@@ -10,28 +8,29 @@ const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
 
-    const { data: contactData } = useQuery({
-        queryKey: ['contact'],
-        queryFn: async () => {
-            const res = await axios.get('http://localhost:3000/contact');
-            return res.data;
-        }
-    });
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         
+        const templateParams = {
+            name: `${formRef.current.firstName.value} ${formRef.current.lastName.value}`,
+            description: formRef.current.message.value,
+            email: formRef.current.email.value,
+            phone: formRef.current.phone.value,
+            subject: formRef.current.subject.value
+        };
+        
         try {
-            await emailjs.sendForm(
-                'YOUR_SERVICE_ID',
-                'YOUR_TEMPLATE_ID',
-                formRef.current,
-                'YOUR_PUBLIC_KEY'
+            await emailjs.send(
+                'service_j8nwhek',
+                'template_woujkxj',
+                templateParams,
+                '7TFhA1yYWSh9_Su_s'
             );
             setSubmitStatus('success');
             formRef.current.reset();
         } catch (error) {
+            console.error('Email error:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
@@ -72,9 +71,9 @@ const Contact = () => {
                     className="text-center mb-16"
                     variants={itemVariants}
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-400 text-transparent bg-clip-text">
-                            Let's work together!
+                    <h2 className="text-5xl md:text-6xl font-bold mb-6 playfair">
+                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
+                            Let's Connect
                         </span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
@@ -194,7 +193,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-gray-300 font-semibold">Phone</h3>
-                                <p className="text-gray-400">{contactData?.[0]?.phone || '+01 123 654 8096'}</p>
+                                <p className="text-gray-400">+880 1739345183</p>
                             </div>
                         </motion.div>
 
@@ -207,7 +206,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-gray-300 font-semibold">Email</h3>
-                                <p className="text-gray-400">{contactData?.[0]?.email || 'contact@example.com'}</p>
+                                <p className="text-gray-400">sumiyabintearahman24@gmail.com</p>
                             </div>
                         </motion.div>
 
@@ -220,7 +219,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-gray-300 font-semibold">Address</h3>
-                                <p className="text-gray-400">{contactData?.[0]?.address || 'Warne Park Street Pine, FL 33157, New York'}</p>
+                                <p className="text-gray-400">Jashore, Bangladesh</p>
                             </div>
                         </motion.div>
                     </motion.div>

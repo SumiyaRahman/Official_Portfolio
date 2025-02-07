@@ -47,14 +47,14 @@ const AboutMe = () => {
                     variants={fadeInUpVariants}
                 >
                     <h2 className="text-5xl md:text-6xl font-bold mb-6 playfair">
-                        <span className="bg-gradient-to-r from-secondary  to-primary text-transparent bg-clip-text">
+                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
                             About Me
                         </span>
                     </h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg">
                         Crafting digital experiences with cutting-edge technologies
                     </p>
-                    <div className="w-32 h-1.5 bg-gradient-to-r from-secondary  to-primary mx-auto mt-8 rounded-full"></div>
+                    <div className="w-32 h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 mx-auto mt-8 rounded-full"></div>
                 </motion.div>
 
                 <div className="flex flex-col lg:flex-row items-center gap-12">

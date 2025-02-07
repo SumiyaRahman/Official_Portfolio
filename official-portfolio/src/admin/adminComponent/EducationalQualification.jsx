@@ -6,7 +6,7 @@ const EducationalQualification = () => {
     const [instituteName, setInstituteName] = useState('');
     const [yearRange, setYearRange] = useState('');
     const [image, setImage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [degree, setDegree] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { data: educationData, refetch } = useQuery({
@@ -17,40 +17,14 @@ const EducationalQualification = () => {
         }
     });
 
-    const handleImageUpload = async (e) => {
-        const imageFile = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-        
-        try {
-            setLoading(true);
-            const response = await axios.post(
-                `https://api.imgbb.com/1/upload`,
-                formData,
-                {
-                    params: {
-                        key: import.meta.env.VITE_IMGBB_API_KEY,
-                    },
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
-            setImage(response.data.data.url);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error uploading image:', error);
-            setLoading(false);
-        }
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         const educationData = {
             instituteName,
             yearRange,
-            image
+            image,
+            degree
         };
 
         try {
@@ -60,6 +34,7 @@ const EducationalQualification = () => {
             setInstituteName('');
             setYearRange('');
             setImage('');
+            setDegree('');
         } catch (error) {
             console.error('Error adding education:', error);
         }
@@ -74,6 +49,7 @@ const EducationalQualification = () => {
                     <div key={index} className="bg-base-200 p-4 rounded-lg">
                         <img src={edu.image} alt={edu.instituteName} className="w-full h-48 object-cover rounded-lg mb-4"/>
                         <h3 className="text-lg font-semibold">{edu.instituteName}</h3>
+                        <p className="text-base-content mb-2">{edu.degree}</p>
                         <p className="text-base-content">{edu.yearRange}</p>
                     </div>
                 ))}
@@ -101,6 +77,18 @@ const EducationalQualification = () => {
                             </div>
 
                             <div>
+                                <label className="block text-sm font-medium mb-2">Degree</label>
+                                <input
+                                    type="text"
+                                    value={degree}
+                                    onChange={(e) => setDegree(e.target.value)}
+                                    className="input input-bordered w-full"
+                                    placeholder="Enter degree name"
+                                    required
+                                />
+                            </div>
+
+                            <div>
                                 <label className="block text-sm font-medium mb-2">Year Range</label>
                                 <input
                                     type="text"
@@ -113,15 +101,15 @@ const EducationalQualification = () => {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">Institute Image</label>
+                                <label className="block text-sm font-medium mb-2">Institute Image URL</label>
                                 <input
-                                    type="file"
-                                    onChange={handleImageUpload}
-                                    className="file-input file-input-bordered w-full"
-                                    accept="image/*"
+                                    type="url"
+                                    value={image}
+                                    onChange={(e) => setImage(e.target.value)}
+                                    className="input input-bordered w-full"
+                                    placeholder="Enter image URL"
                                     required
                                 />
-                                {loading && <p className="text-sm mt-2">Uploading image...</p>}
                                 {image && (
                                     <img 
                                         src={image} 
@@ -142,7 +130,6 @@ const EducationalQualification = () => {
                                 <button 
                                     type="submit" 
                                     className="btn btn-primary"
-                                    disabled={loading}
                                 >
                                     Add Education
                                 </button>

@@ -10,11 +10,22 @@ import Skills from "../admin/adminComponent/Skills";
 import EducationalQualification from "../admin/adminComponent/EducationalQualification";
 import Project from "../admin/adminComponent/Project";
 import ViewDetails from "../Pages/ViewDetails";
+import Home from "../Pages/Home";
 
   const routes = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      children: [
+        {
+          path: "/",
+          element: <Home></Home>,
+        },
+        {
+          path: "project/:id",
+          element: <ViewDetails></ViewDetails>,
+        }
+      ]
     },
     {
       path: "admin/dashboard",
@@ -44,10 +55,6 @@ import ViewDetails from "../Pages/ViewDetails";
           path: "project",
           element: <Project></Project>,
         },
-        {
-          path: "project/:id",
-          element: <ViewDetails></ViewDetails>,
-        }
       ],
     },
   ]);

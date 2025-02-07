@@ -13,29 +13,37 @@ const Banner = () => {
     },
   });
 
-  const socialLinks = [
-    { icon: <FaTwitter />, url: bannerData?.[0]?.twitter || "#" },
-    { icon: <FaDribbble />, url: bannerData?.[0]?.dribbble || "#" },
-    { icon: <FaLinkedinIn />, url: bannerData?.[0]?.linkedin || "#" },
-    { icon: <FaGithub />, url: bannerData?.[0]?.github || "#" },
-  ];
+  const { data: socialLinks } = useQuery({
+    queryKey: ["socialLinks"],
+    queryFn: async () => {
+      const res = await axios.get("https://official-portfolio-server.vercel.app/social-links");
+      return res.data;
+    },
+  });
+
+  const socialIcons = {
+    twitter: FaTwitter,
+    github: FaGithub,
+    linkedin: FaLinkedinIn,
+    dribbble: FaDribbble
+  };
 
   return (
-    <div className="min-h-screen flex items-center">
+    <div id="home" className="min-h-screen flex items-center pt-20 md:pt-24">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-8 md:py-12">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 text-white"
+            className="flex-1 text-white mt-16 lg:mt-0"
           >
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="playfair text-2xl md:text-xl tracking-[0.2rem]"
+              className="playfair text-xl sm:text-2xl md:text-xl tracking-[0.2rem]"
             >
               {bannerData?.[0]?.name || "Sumiya Binte A Rahman"}
             </motion.h2>
@@ -44,9 +52,9 @@ const Banner = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="my-8"
+              className="my-4 sm:my-6 md:my-8"
             >
-              <span className="playfair bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text text-2xl md:text-[55px] font-medium leading-[1.8rem] tracking-[0.2rem]">
+              <span className="playfair bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text text-xl sm:text-2xl md:text-[55px] font-medium leading-normal md:leading-[1.8rem] tracking-[0.2rem]">
                 {(bannerData?.[0]?.designation || "Next-Level Web Developer.").split('').map((char, index) => (
                   <motion.span
                     key={index}
@@ -67,7 +75,7 @@ const Banner = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-white text-opacity-70 font-light text-[15px] tracking-wider leading-[1.8rem] mb-8 max-w-2xl"
+              className="text-white text-opacity-70 font-light text-sm sm:text-[15px] tracking-wider leading-[1.6rem] sm:leading-[1.8rem] mb-6 sm:mb-8 max-w-2xl"
             >
               {bannerData?.[0]?.description ||
                 "I break down complex user experience problems to create integrity focused solutions that connect billions of people"}
@@ -78,29 +86,34 @@ const Banner = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex items-center gap-6"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-semibold hover:shadow-lg transition-all duration-300"
+                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-semibold hover:shadow-lg transition-all duration-300"
               >
                 Resume
               </motion.button>
 
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, color: "#A855F7" }}
-                    className="text-gray-400 text-xl hover:text-primary transition-colors duration-300"
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
+              <div className="flex gap-4 mt-4 sm:mt-0">
+                {/* social links */}
+                {socialLinks?.map((link, index) => {
+                  const Icon = socialIcons[link.name.toLowerCase()];
+                  return Icon ? (
+                    <motion.a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="text-white hover:text-purple-400 transition-colors duration-300 text-xl sm:text-2xl"
+                    >
+                      <Icon />
+                    </motion.a>
+                  ) : null;
+                })}
               </div>
             </motion.div>
           </motion.div>
@@ -114,10 +127,10 @@ const Banner = () => {
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]"
+              className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
             >
               <div className="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-8xl font-bold">
+                <span className="text-white text-6xl sm:text-7xl md:text-8xl font-bold">
                   {bannerData?.[0]?.name ? bannerData[0].name.charAt(0) : "S"}
                 </span>
               </div>

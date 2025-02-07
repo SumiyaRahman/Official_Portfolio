@@ -41,6 +41,9 @@ const Dashboard = () => {
             <Link to="/admin/dashboard/educational-qualification">Add Educational Qualification</Link>
           </li>
           <li>
+            <Link to="/admin/dashboard/achievement">Add Achievement</Link>
+          </li>
+          <li>
             <Link to="/admin/dashboard/project">Add Project</Link>
           </li>
           <div className="divider"></div>

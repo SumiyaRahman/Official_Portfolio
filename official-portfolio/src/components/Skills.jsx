@@ -58,7 +58,7 @@ const Skills = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-[#060911] to-[#0e131a] py-20 px-4 lg:px-8 relative overflow-hidden">
+        <div id="skills" className="min-h-screen bg-gradient-to-b from-[#060911] to-[#0e131a] py-20 px-4 lg:px-8 relative overflow-hidden">
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse"></div>
@@ -89,29 +89,29 @@ const Skills = () => {
                 </motion.div>
 
                 {/* Skills Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
                     {skillsData?.map((skill, index) => (
                         <motion.div
                             key={index}
                             variants={skillVariants}
                             className="group relative"
                         >
-                            <div className="relative z-10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 rounded-2xl
+                            <div className="relative z-10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl
                                          backdrop-blur-xl border border-gray-700/50 
                                          hover:border-purple-500/50 transition-all duration-500
                                          hover:shadow-2xl hover:shadow-purple-500/20
                                          transform hover:-translate-y-2">
-                                <div className="flex flex-col items-center space-y-4">
+                                <div className="flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-4">
                                     <motion.img 
                                         src={skill.logo} 
                                         alt={skill.name}
-                                        className="w-20 h-20 object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]
+                                        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]
                                                  group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.7)] transition-all duration-300"
                                         variants={logoVariants}
                                         whileHover="hover"
                                     />
                                     <motion.span 
-                                        className="text-gray-200 font-medium text-lg tracking-wide"
+                                        className="text-gray-200 font-medium text-sm sm:text-base md:text-lg tracking-wide"
                                         variants={skillVariants}
                                     >
                                         {skill.name}

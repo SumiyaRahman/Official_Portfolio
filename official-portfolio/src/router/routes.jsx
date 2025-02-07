@@ -11,6 +11,7 @@ import EducationalQualification from "../admin/adminComponent/EducationalQualifi
 import Project from "../admin/adminComponent/Project";
 import ViewDetails from "../Pages/ViewDetails";
 import Home from "../Pages/Home";
+import Achievement from "../admin/adminComponent/Achievement";
 
   const routes = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ import Home from "../Pages/Home";
         {
           path: "educational-qualification",
           element: <EducationalQualification></EducationalQualification>,
+        },
+        {
+          path: "achievement",
+          element: <Achievement></Achievement>,
         },
         {
           path: "project",

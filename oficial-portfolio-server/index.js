@@ -31,6 +31,7 @@ async function run() {
     const skillsCollection = db.collection("skills");
     const educationalQualificationCollection = db.collection("educationalQualification");
     const projectCollection = db.collection("project");
+    const achievementCollection = db.collection("achievement");
 
     // get about me
     app.get("/banner-intro", async (req, res) => {
@@ -125,6 +126,27 @@ async function run() {
     app.post("/educational-qualification", async (req, res) => {
       const educationalQualification = req.body;
       const result = await educationalQualificationCollection.insertOne(educationalQualification);
+      res.send(result);
+    });
+
+    // get achievement
+    app.get("/achievements", async (req, res) => {
+      const achievement = await achievementCollection.find({}).toArray();
+      res.send(achievement);
+    }); 
+
+    // post achievement
+    app.post("/achievements", async (req, res) => {
+      const achievement = req.body;
+      const result = await achievementCollection.insertOne(achievement);
+      res.send(result);
+    });
+
+    // update achievement
+    app.patch("/achievements/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedAchievement = req.body;
+      const result = await achievementCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedAchievement });
       res.send(result);
     });
 

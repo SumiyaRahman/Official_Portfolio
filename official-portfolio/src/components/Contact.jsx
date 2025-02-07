@@ -13,11 +13,9 @@ const Contact = () => {
         setIsSubmitting(true);
         
         const templateParams = {
-            name: `${formRef.current.firstName.value} ${formRef.current.lastName.value}`,
+            name: formRef.current.name.value,
             description: formRef.current.message.value,
-            email: formRef.current.email.value,
-            phone: formRef.current.phone.value,
-            subject: formRef.current.subject.value
+            email: formRef.current.email.value
         };
         
         try {
@@ -58,7 +56,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#0F172A] py-20 px-4 lg:px-8">
+        <div id="contact" className="min-h-screen bg-[#0F172A] py-20 px-4 lg:px-8">
             <motion.div 
                 className="container mx-auto"
                 initial="hidden"
@@ -89,67 +87,31 @@ const Contact = () => {
                             onSubmit={handleSubmit}
                             className="space-y-6"
                         >
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <motion.input
-                                    type="text"
-                                    name="firstName"
-                                    placeholder="First name"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
-                                             text-gray-300 focus:outline-none focus:border-purple-500 
-                                             transition-colors duration-300"
-                                    variants={itemVariants}
-                                />
-                                <motion.input
-                                    type="text"
-                                    name="lastName"
-                                    placeholder="Last name"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
-                                             text-gray-300 focus:outline-none focus:border-purple-500 
-                                             transition-colors duration-300"
-                                    variants={itemVariants}
-                                />
-                            </div>
+                            <motion.input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name"
+                                required
+                                className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
+                                         text-gray-300 focus:outline-none focus:border-purple-500 
+                                         transition-colors duration-300"
+                                variants={itemVariants}
+                            />
 
                             <motion.input
                                 type="email"
                                 name="email"
-                                placeholder="Email address"
+                                placeholder="Your Email"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
                                          text-gray-300 focus:outline-none focus:border-purple-500 
                                          transition-colors duration-300"
                                 variants={itemVariants}
                             />
-
-                            <motion.input
-                                type="tel"
-                                name="phone"
-                                placeholder="Phone number"
-                                className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
-                                         text-gray-300 focus:outline-none focus:border-purple-500 
-                                         transition-colors duration-300"
-                                variants={itemVariants}
-                            />
-
-                            <motion.select
-                                name="subject"
-                                required
-                                className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
-                                         text-gray-300 focus:outline-none focus:border-purple-500 
-                                         transition-colors duration-300"
-                                variants={itemVariants}
-                            >
-                                <option value="">Select an option</option>
-                                <option value="project">Project Inquiry</option>
-                                <option value="collaboration">Collaboration</option>
-                                <option value="other">Other</option>
-                            </motion.select>
 
                             <motion.textarea
                                 name="message"
-                                placeholder="Message"
+                                placeholder="Your Message"
                                 required
                                 rows={6}
                                 className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-700/50 
@@ -188,7 +150,7 @@ const Contact = () => {
                             className="flex items-center space-x-4"
                             whileHover={{ x: 10 }}
                         >
-                            <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <div className="hidden sm:flex w-12 h-12 bg-purple-600 rounded-full items-center justify-center">
                                 <FaPhone className="text-white text-xl" />
                             </div>
                             <div>
@@ -201,12 +163,12 @@ const Contact = () => {
                             className="flex items-center space-x-4"
                             whileHover={{ x: 10 }}
                         >
-                            <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <div className="hidden sm:flex w-12 h-12 bg-purple-600 rounded-full items-center justify-center">
                                 <FaEnvelope className="text-white text-xl" />
                             </div>
                             <div>
                                 <h3 className="text-gray-300 font-semibold">Email</h3>
-                                <p className="text-gray-400">sumiyabintearahman24@gmail.com</p>
+                                <p className="text-gray-400 text-sm sm:text-base break-all">sumiyabintearahman24@gmail.com</p>
                             </div>
                         </motion.div>
 
@@ -214,7 +176,7 @@ const Contact = () => {
                             className="flex items-center space-x-4"
                             whileHover={{ x: 10 }}
                         >
-                            <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <div className="hidden sm:flex w-12 h-12 bg-purple-600 rounded-full items-center justify-center">
                                 <FaMapMarkerAlt className="text-white text-xl" />
                             </div>
                             <div>

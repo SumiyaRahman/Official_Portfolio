@@ -25,7 +25,53 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     const db = client.db("portfolio");
+    const bannerIntroCollection = db.collection("bannerIntro");
+    const socialLinksCollection = db.collection("socialLinks");
     const aboutMeCollection = db.collection("aboutMe");
+    const skillsCollection = db.collection("skills");
+    const educationalQualificationCollection = db.collection("educationalQualification");
+    const projectCollection = db.collection("project");
+
+    // get about me
+    app.get("/banner-intro", async (req, res) => {
+      const bannerIntro = await bannerIntroCollection.find({}).toArray();
+      res.send(bannerIntro);
+    });
+
+    app.post("/banner-intro", async (req, res) => {
+      const bannerIntro = req.body;
+      const result = await bannerIntroCollection.insertOne(bannerIntro);
+      res.send(result);
+    });
+
+    // update about me
+    app.patch("/banner-intro/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedBannerIntro = req.body;
+      const result = await bannerIntroCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedBannerIntro });
+      res.send(result);
+    });
+
+    // get social links
+    app.get("/social-links", async (req, res) => {
+      const socialLinks = await socialLinksCollection.find({}).toArray();
+      res.send(socialLinks);
+    });
+
+    // update social links
+    app.patch("/social-links/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedSocialLinks = req.body;
+      const result = await socialLinksCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedSocialLinks });
+      res.send(result);
+    });
+
+    // post social links
+    app.post("/social-links", async (req, res) => {
+      const socialLinks = req.body;
+      const result = await socialLinksCollection.insertOne(socialLinks);
+      res.send(result);
+    });
 
     // get about me
     app.get("/about-me", async (req, res) => {
@@ -33,6 +79,7 @@ async function run() {
       res.send(aboutMe);
     });
 
+    // post about me
     app.post("/about-me", async (req, res) => {
       const aboutMe = req.body;
       const result = await aboutMeCollection.insertOne(aboutMe);
@@ -44,6 +91,61 @@ async function run() {
       const id = req.params.id;
       const updatedAboutMe = req.body;
       const result = await aboutMeCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedAboutMe });
+      res.send(result);
+    });
+
+    // get skills
+    app.get("/skills", async (req, res) => {
+      const skills = await skillsCollection.find({}).toArray();
+      res.send(skills);
+    });
+
+    // post skills
+    app.post("/skills", async (req, res) => {
+      const skills = req.body;
+      const result = await skillsCollection.insertOne(skills);
+      res.send(result);
+    });
+
+    // update skills
+    app.patch("/skills/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedSkills = req.body;
+      const result = await skillsCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedSkills });
+      res.send(result);
+    });
+
+    // get educational qualification
+    app.get("/educational-qualification", async (req, res) => {
+      const educationalQualification = await educationalQualificationCollection.find({}).toArray();
+      res.send(educationalQualification);
+    });
+
+    // post educational qualification
+    app.post("/educational-qualification", async (req, res) => {
+      const educationalQualification = req.body;
+      const result = await educationalQualificationCollection.insertOne(educationalQualification);
+      res.send(result);
+    });
+
+    // get project
+    app.get("/project", async (req, res) => {
+      const project = await projectCollection.find({}).toArray();
+      res.send(project);
+    });
+
+    // post project
+    app.post("/project", async (req, res) => {
+      const project = req.body;
+      const result = await projectCollection.insertOne(project);
+      res.send(result);
+    });
+
+    // update project
+    app.patch("/project/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedProject = req.body;
+      const result = await projectCollection.updateOne({ _id: new ObjectId(id) }, { $set: updatedProject });
       res.send(result);
     });
 

@@ -6,19 +6,19 @@ const Navbar = () => {
   const links = (
     <>
       <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <a href="#">Home</a>
+        <a href="#home">Home</a>
       </motion.li>
       <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <a href="#">About Me</a>
+        <a href="#about">About Me</a>
       </motion.li>
       <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <a href="#">Skills</a>
+        <a href="#skills">Skills</a>
       </motion.li>
       <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <a href="#">Projects</a>
+        <a href="#projects">Projects</a>
       </motion.li>
       <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <a href="#">Contact</a>
+        <a href="#contact">Contact</a>
       </motion.li>
     </>
   );
@@ -85,6 +85,9 @@ const Navbar = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gradient-to-r from-primary to-secondary text-white text-sm md:text-base font-semibold px-6 py-2 md:px-8 md:py-3 rounded-full tracking-wider hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
           >
             Resume

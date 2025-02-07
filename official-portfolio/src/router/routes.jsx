@@ -9,6 +9,7 @@ import AboutMe from "../admin/adminComponent/AboutMe";
 import Skills from "../admin/adminComponent/Skills";
 import EducationalQualification from "../admin/adminComponent/EducationalQualification";
 import Project from "../admin/adminComponent/Project";
+import ViewDetails from "../Pages/ViewDetails";
 
   const routes = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ import Project from "../admin/adminComponent/Project";
           path: "project",
           element: <Project></Project>,
         },
+        {
+          path: "project/:id",
+          element: <ViewDetails></ViewDetails>,
+        }
       ],
     },
   ]);

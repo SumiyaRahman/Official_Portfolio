@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: 'Sora', sans-serif;
+  background-image: linear-gradient(to right, #0f0715, #0f0715, #2a1454);
+}
+.playfair{
+  font-family: 'Playfair Display', serif;
+}
